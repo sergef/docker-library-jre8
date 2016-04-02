@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM %DOCKER_REGISTRY%docker-library-alpine
 
 # Thanks to:
 # Anastas Dancha <anapsix@random.io>
@@ -6,14 +6,6 @@ FROM alpine:edge
 # and Victor Palma <palma.victor@gmail.com>
 
 MAINTAINER Serge Fomin <serge.fo@gmail.com>
-
-# Full list of mirrors can be found here http://rsync.alpinelinux.org/alpine/MIRRORS.txt
-ENV APK_MIRROR http://mirror.leaseweb.com
-
-# Enabling main, community and testing alpine package repos
-RUN echo "$APK_MIRROR/alpine/edge/main" > /etc/apk/repositories
-RUN echo "@community $APK_MIRROR/alpine/edge/community" >> /etc/apk/repositories
-RUN echo "@testing $APK_MIRROR/alpine/edge/testing" >> /etc/apk/repositories
 
 # https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-2.21-r2.apk
 COPY glibc-2.21-r2.apk /tmp/glibc-2.21-r2.apk
